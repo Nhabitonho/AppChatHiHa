@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RegisterActivity"
+    android:orientation="vertical"
+    android:weightSum="8"
+    >
+
+    <include
+        android:id="@+id/toolBar1"
+        layout="@layout/bar_layout"/>
+
+    <ImageView
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_wave"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <LinearLayout
+        android:layout_marginHorizontal="10dp"
+        android:orientation="vertical"
+        android:layout_weight="7"
+        android:layout_width="match_parent"
+        android:layout_height="0dp">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:drawablePadding="10dp"
+            android:layout_marginTop="10dp"
+            android:textSize="20sp"
+            android:hint="Username"
+            android:textColorHint="#c5c5c5"
+            android:paddingStart="10sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textUserName"
+            >
+            <com.google.android.material.textfield.TextInputEditText
+                android:drawablePadding="10sp"
+                android:drawableStart="@drawable/ic_user"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            </com.google.android.material.textfield.TextInputEditText>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:drawablePadding="10dp"
+            android:layout_marginTop="10dp"
+            android:textSize="20sp"
+            android:hint="Mail"
+            android:paddingStart="10sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textEmail"
+            >
+            <com.google.android.material.textfield.TextInputEditText
+                android:drawablePadding="10sp"
+                android:drawableStart="@drawable/ic_mail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            </com.google.android.material.textfield.TextInputEditText>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_marginTop="10dp"
+            android:hint="Password"
+            app:boxBackgroundMode="none"
+            app:passwordToggleEnabled="true"
+            android:paddingStart="10sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textPassWord"
+            >
+            <com.google.android.material.textfield.TextInputEditText
+                android:drawablePadding="10sp"
+                android:inputType="textPassword"
+                android:drawableStart="@drawable/ic_pass"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            </com.google.android.material.textfield.TextInputEditText>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:layout_marginStart="5sp"
+            android:layout_marginTop="20sp"
+            android:background="@drawable/bg_signup"
+            android:textSize="20sp"
+            android:textColor="@color/white"
+            android:textAllCaps="false"
+            android:text="Đăng Ký"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnRegister" />
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "336148635116",
+    "project_id": "appchathiha",
+    "storage_bucket": "appchathiha.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:336148635116:android:893bf2ca5e05b7698274c9",
+        "android_client_info": {
+          "package_name": "com.example.appchathiha"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "336148635116-o1jmg7mrkmh70nka3di4m8p8f6nu339q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAqagqLOGRVNXQoEKoH1bk1eRo1oW5dYEc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "336148635116-o1jmg7mrkmh70nka3di4m8p8f6nu339q.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

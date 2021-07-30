@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".StartActivity"
+    android:orientation="vertical"
+    android:layout_weight="5">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+        <RelativeLayout
+            android:background="#0099ff"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="40dp"
+                android:textStyle="bold"
+                android:textSize="30sp"
+                android:textColor="@color/white"
+                android:text="AppChat \nHiHa"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+        <ImageView
+            android:scaleType="fitXY"
+            android:src="@drawable/ic_wave"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp" />
+    </LinearLayout>
+        <Button
+            android:id="@+id/login"
+            android:layout_marginStart="5sp"
+            android:layout_marginTop="20sp"
+            android:background="@drawable/bg_signup"
+            android:textSize="20sp"
+            android:textColor="@color/white"
+            android:textAllCaps="false"
+            android:text="Đăng Nhập"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <RelativeLayout
+            android:layout_marginTop="20sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <View
+                android:layout_centerInParent="true"
+                android:background="#c5c5c5"
+                android:layout_width="wrap_content"
+                android:layout_height="1dp" />
+
+            <TextView
+                android:gravity="center"
+                android:background="@color/white"
+                android:padding="5dp"
+                android:layout_centerInParent="true"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:text="or"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/register"
+            android:textAllCaps="false"
+            android:layout_marginStart="5sp"
+            android:layout_marginTop="20sp"
+            android:textColor="#acacac"
+            android:textStyle="normal"
+            android:textSize="20sp"
+            android:background="@drawable/bg_login"
+            android:text="Đăng Ký"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
