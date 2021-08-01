@@ -54,8 +54,8 @@ public class MainActivity extends AppCompatActivity {
         username = findViewById(R.id.username);
 
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-        reference = FirebaseDatabase.getInstance().getReference().child(firebaseUser.getUid());
-
+        reference = FirebaseDatabase.getInstance().getReference("Users").child(firebaseUser.getUid());
+        //DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Users");
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {

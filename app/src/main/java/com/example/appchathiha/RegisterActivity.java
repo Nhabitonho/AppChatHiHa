@@ -73,10 +73,10 @@ public class RegisterActivity extends AppCompatActivity {
                             hashMap.put("id", userid);
                             hashMap.put("username",username);
                             hashMap.put("imageURL","default");
-                            db.getReference("Users").setValue(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
+                            db.getReference("Users").child(userid).setValue(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull  Task<Void> task) {
-                                    Toast.makeText(RegisterActivity.this, task.getException().toString(), Toast.LENGTH_SHORT).show();
+//                                    Toast.makeText(RegisterActivity.this, task.getException().toString(), Toast.LENGTH_SHORT).show();
                                     if(task.isSuccessful()){
                                   Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
                                   intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
