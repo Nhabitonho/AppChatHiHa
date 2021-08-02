@@ -97,7 +97,7 @@ public class MessageActivity extends AppCompatActivity {
                 }
             }
         });
-        Toast.makeText(MessageActivity.this,   "bbb" + userid, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(MessageActivity.this,   "bbb" + userid, Toast.LENGTH_SHORT).show();
 
 
         reference = FirebaseDatabase.getInstance().getReference("Users").child(userid);
