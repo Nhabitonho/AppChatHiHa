@@ -55,6 +55,8 @@ public class MessageActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_message);
 
+        fuser = FirebaseAuth.getInstance().getCurrentUser();
+
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("");
@@ -81,6 +83,7 @@ public class MessageActivity extends AppCompatActivity {
         intent = getIntent();
         String userid = intent.getStringExtra("userid");
 
+
         btn_send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -94,8 +97,9 @@ public class MessageActivity extends AppCompatActivity {
                 }
             }
         });
+        Toast.makeText(MessageActivity.this,   "bbb" + userid, Toast.LENGTH_SHORT).show();
 
-        fuser = FirebaseAuth.getInstance().getCurrentUser();
+
         reference = FirebaseDatabase.getInstance().getReference("Users").child(userid);
 
         reference.addValueEventListener(new ValueEventListener() {
