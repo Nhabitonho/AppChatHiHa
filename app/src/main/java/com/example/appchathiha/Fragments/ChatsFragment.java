@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 
 import com.example.appchathiha.Adapter.UserAdapter;
 import com.example.appchathiha.Model.Chat;
+import com.example.appchathiha.Model.Chatlist;
 import com.example.appchathiha.Model.User;
 import com.example.appchathiha.R;
 import com.google.firebase.auth.FirebaseAuth;
@@ -37,7 +38,7 @@ public class ChatsFragment extends Fragment {
     FirebaseUser fuser;
     DatabaseReference reference;
 
-    private List<String> usersList;
+    private List<Chatlist> usersList;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -51,24 +52,44 @@ public class ChatsFragment extends Fragment {
         fuser = FirebaseAuth.getInstance().getCurrentUser();
 
         usersList = new ArrayList<>();
+//      Delete
+//        reference = FirebaseDatabase.getInstance().getReference("Chats");
+//        reference.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                usersList.clear();
+//
+//                for(DataSnapshot snapshot : dataSnapshot.getChildren()){
+//                    Chat chat = snapshot.getValue(Chat.class);
+//
+//                    if(chat.getSender().equals(fuser.getUid())){
+//                        usersList.add(chat.getReceiver());
+//                    }
+//                    if(chat.getReceiver().equals(fuser.getUid())){
+//                        usersList.add(chat.getSender());
+//                    }
+//                }
+//                readChats();
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {
+//
+//            }
+//        });
 
-        reference = FirebaseDatabase.getInstance().getReference("Chats");
+        reference = FirebaseDatabase.getInstance().getReference("Chatlist").child(fuser.getUid());
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 usersList.clear();
-
                 for(DataSnapshot snapshot : dataSnapshot.getChildren()){
-                    Chat chat = snapshot.getValue(Chat.class);
-
-                    if(chat.getSender().equals(fuser.getUid())){
-                        usersList.add(chat.getReceiver());
-                    }
-                    if(chat.getReceiver().equals(fuser.getUid())){
-                        usersList.add(chat.getSender());
-                    }
+                    Chatlist chatlist = snapshot.getValue(Chatlist.class);
+                    usersList.add(chatlist);
                 }
-                readChats();
+
+                chatList();
+
             }
 
             @Override
@@ -80,33 +101,23 @@ public class ChatsFragment extends Fragment {
         return view;
     }
 
-    private void readChats(){
+    private void chatList() {
         mUsers = new ArrayList<>();
-
         reference = FirebaseDatabase.getInstance().getReference("Users");
-
         reference.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 mUsers.clear();
-                for(DataSnapshot dataSnapshot : snapshot.getChildren()){
-                    User user = dataSnapshot.getValue(User.class);
-
-                    for (String id : usersList){
-                        if (user.getId().equals(id)){
-                            if(mUsers.size()!=0){
-                                for(User user1 : mUsers){
-                                    if(!user.getId().equals(user1.getId())){
-                                        mUsers.add(user);
-                                    }
-                                }
-                            }else{
-                                mUsers.add(user);
-                            }
+                for(DataSnapshot snapshot : dataSnapshot.getChildren()){
+                    User user = snapshot.getValue(User.class);
+                    for(Chatlist chatlist : usersList){
+                        if(user.getId().equals(chatlist.getId())){
+                            mUsers.add(user);
                         }
                     }
+
                 }
-                userAdapter = new UserAdapter(getContext(), mUsers, false);
+                userAdapter = new UserAdapter(getContext(), mUsers, true);
                 recyclerView.setAdapter(userAdapter);
             }
 
@@ -116,5 +127,42 @@ public class ChatsFragment extends Fragment {
             }
         });
     }
+//      delete
+//    private void readChats(){
+//        mUsers = new ArrayList<>();
+//
+//        reference = FirebaseDatabase.getInstance().getReference("Users");
+//
+//        reference.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                mUsers.clear();
+//                for(DataSnapshot dataSnapshot : snapshot.getChildren()){
+//                    User user = dataSnapshot.getValue(User.class);
+//
+//                    for (String id : usersList){
+//                        if (user.getId().equals(id)){
+//                            if(mUsers.size()!=0){
+//                                for(User user1 : mUsers){
+//                                    if(!user.getId().equals(user1.getId())){
+//                                        mUsers.add(user);
+//                                    }
+//                                }
+//                            }else{
+//                                mUsers.add(user);
+//                            }
+//                        }
+//                    }
+//                }
+//                userAdapter = new UserAdapter(getContext(), mUsers, false);
+//                recyclerView.setAdapter(userAdapter);
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {
+//
+//            }
+//        });
+//    }
 
 }
