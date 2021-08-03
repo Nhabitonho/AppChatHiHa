@@ -21,7 +21,7 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:id="@+id/profile_image"
-                android:background="#f30"/>
+                android:background="@color/colorPrimary"/>
             <TextView
                 android:id="@+id/username"
                 android:textStyle="bold"
