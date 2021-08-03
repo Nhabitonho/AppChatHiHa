@@ -76,6 +76,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/btnLogin"/>
+        <TextView
+            android:textColor="@color/colorPrimary"
+            android:id="@+id/forgot_password"
+            android:textStyle="italic"
+            android:layout_gravity="end"
+            android:layout_marginTop="10dp"
+            android:text="Quên mật khẩu ?"
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
     </LinearLayout>
 
 </LinearLayout>
