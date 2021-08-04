@@ -15,6 +15,7 @@ import com.example.appchathiha.Adapter.UserAdapter;
 import com.example.appchathiha.Model.Chat;
 import com.example.appchathiha.Model.Chatlist;
 import com.example.appchathiha.Model.User;
+import com.example.appchathiha.Notifications.Token;
 import com.example.appchathiha.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -23,6 +24,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.iid.FirebaseInstanceId;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,31 +54,7 @@ public class ChatsFragment extends Fragment {
         fuser = FirebaseAuth.getInstance().getCurrentUser();
 
         usersList = new ArrayList<>();
-//      Delete
-//        reference = FirebaseDatabase.getInstance().getReference("Chats");
-//        reference.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                usersList.clear();
-//
-//                for(DataSnapshot snapshot : dataSnapshot.getChildren()){
-//                    Chat chat = snapshot.getValue(Chat.class);
-//
-//                    if(chat.getSender().equals(fuser.getUid())){
-//                        usersList.add(chat.getReceiver());
-//                    }
-//                    if(chat.getReceiver().equals(fuser.getUid())){
-//                        usersList.add(chat.getSender());
-//                    }
-//                }
-//                readChats();
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//
-//            }
-//        });
+
 
         reference = FirebaseDatabase.getInstance().getReference("Chatlist").child(fuser.getUid());
         reference.addValueEventListener(new ValueEventListener() {
@@ -98,8 +76,17 @@ public class ChatsFragment extends Fragment {
             }
         });
 
+        updateToken(FirebaseInstanceId.getInstance().getToken());
+
         return view;
     }
+
+    private void updateToken(String token) {
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Tokens");
+        Token token1 = new Token(token);
+        reference.child(fuser.getUid()).setValue(token1);
+    }
+
 
     private void chatList() {
         mUsers = new ArrayList<>();
@@ -127,42 +114,4 @@ public class ChatsFragment extends Fragment {
             }
         });
     }
-//      delete
-//    private void readChats(){
-//        mUsers = new ArrayList<>();
-//
-//        reference = FirebaseDatabase.getInstance().getReference("Users");
-//
-//        reference.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                mUsers.clear();
-//                for(DataSnapshot dataSnapshot : snapshot.getChildren()){
-//                    User user = dataSnapshot.getValue(User.class);
-//
-//                    for (String id : usersList){
-//                        if (user.getId().equals(id)){
-//                            if(mUsers.size()!=0){
-//                                for(User user1 : mUsers){
-//                                    if(!user.getId().equals(user1.getId())){
-//                                        mUsers.add(user);
-//                                    }
-//                                }
-//                            }else{
-//                                mUsers.add(user);
-//                            }
-//                        }
-//                    }
-//                }
-//                userAdapter = new UserAdapter(getContext(), mUsers, false);
-//                recyclerView.setAdapter(userAdapter);
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//
-//            }
-//        });
-//    }
-
 }
