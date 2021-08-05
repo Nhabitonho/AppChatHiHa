@@ -1,4 +1,4 @@
-package com.example.appchathiha;
+package com.example.appchathiha.Activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -26,6 +26,7 @@ import com.example.appchathiha.Notifications.Data;
 import com.example.appchathiha.Notifications.MyResponse;
 import com.example.appchathiha.Notifications.Sender;
 import com.example.appchathiha.Notifications.Token;
+import com.example.appchathiha.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;

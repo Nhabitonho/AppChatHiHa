@@ -1,4 +1,4 @@
-package com.example.appchathiha;
+package com.example.appchathiha.Activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,6 +20,7 @@ import com.example.appchathiha.Fragments.ProflieFragment;
 import com.example.appchathiha.Fragments.UsersFragment;
 import com.example.appchathiha.Model.Chat;
 import com.example.appchathiha.Model.User;
+import com.example.appchathiha.R;
 import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -29,7 +30,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 import de.hdodenhof.circleimageview.CircleImageView;

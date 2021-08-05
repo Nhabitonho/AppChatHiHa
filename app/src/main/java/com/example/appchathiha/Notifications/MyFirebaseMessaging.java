@@ -10,11 +10,10 @@ import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.renderscript.RenderScript;
 
 import androidx.core.app.NotificationCompat;
 
-import com.example.appchathiha.MessageActivity;
+import com.example.appchathiha.Activity.MessageActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.messaging.FirebaseMessagingService;
